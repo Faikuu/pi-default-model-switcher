@@ -1,4 +1,4 @@
-# pi-default-model-switcher
+# @faiku/pi-default-model-switcher
 
 A [pi](https://github.com/earendil-works/pi) extension that adds commands for changing the **default startup model**, globally or per project, and for switching the model of the running session.
 
@@ -33,7 +33,19 @@ All model commands accept an optional argument to skip the pickers:
 
 ## Install
 
-Personal (all projects):
+From npm (recommended):
+
+```bash
+pi install npm:@faiku/pi-default-model-switcher
+```
+
+Try it for a single run without installing:
+
+```bash
+pi -e npm:@faiku/pi-default-model-switcher
+```
+
+From a local checkout:
 
 ```bash
 ln -s "$PWD" ~/.pi/agent/extensions/pi-default-model-switcher
@@ -47,7 +59,7 @@ pi --extension ./index.ts
 
 ```bash
 # add to <project>/.pi/settings.json
-{ "extensions": ["/Users/adam/Documents/Coding/pi-default-model-switcher"] }
+{ "extensions": ["/absolute/path/to/pi-default-model-switcher"] }
 ```
 
 Startup defaults are read when a session starts, so run `/reload` or start a new pi session for the persisted default to take effect everywhere; the current session already uses the new model.
@@ -61,4 +73,9 @@ npm run typecheck    # tsc --noEmit
 ```
 
 Layout: `index.ts` (commands), `lib/settings.ts` (settings paths + merge/write), `lib/models.ts` (model refs, thinking levels), `lib/fuzzy.ts` (search ranking), `lib/picker.ts` (pure item/window math), `lib/model-picker.ts` (overlay component).
-# pi-default-model-switcher
+
+The extension ships as TypeScript source — pi loads `.ts` entry points directly, so there is no build step.
+
+## License
+
+MIT
