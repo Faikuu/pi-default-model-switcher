@@ -1,6 +1,6 @@
 {
   "name": "@faiku/pi-default-model-switcher",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pi extension for switching the default startup model globally or per project",
   "author": "Faiku",
   "license": "MIT",
