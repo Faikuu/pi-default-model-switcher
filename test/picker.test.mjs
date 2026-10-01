@@ -56,6 +56,17 @@ test("buildPickerItems sorts by provider and marks the current model", () => {
 	assert.ok(items[0].searchText.includes("claude haiku"));
 });
 
+test("buildPickerItems shows the provider so same-named models stay distinguishable", () => {
+	const items = buildPickerItems([
+		{ provider: "opencode", id: "shared-model", name: "Same Name" },
+		{ provider: "qwen", id: "shared-model", name: "Same Name" },
+	]);
+	// The labels collide on purpose: the provider in the description is what
+	// tells identically-named models apart in the picker.
+	assert.deepEqual(items.map((i) => i.label), ["Same Name", "Same Name"]);
+	assert.deepEqual(items.map((i) => i.description), ["opencode  shared-model", "qwen  shared-model"]);
+});
+
 test("filterPickerItems matches on provider, id, and name", () => {
 	const items = buildPickerItems(models);
 	assert.equal(filterPickerItems(items, "gpt-5")[0].value, "openai/gpt-5");

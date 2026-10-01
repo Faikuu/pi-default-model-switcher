@@ -22,6 +22,7 @@ All model commands accept an optional argument to skip the pickers:
 ## Behavior
 
 - The model picker is a centered overlay with a search box. Typing fuzzy-matches provider, model id, and name (`sonnet`, `openai gpt`, `1m`); `↑↓`/`j`/`k` move, `enter` selects, `esc` cancels, mouse wheel and click work in fullscreen mode.
+- Each row shows the model name followed by its provider and model id, so two providers serving the same model stay distinguishable.
 - The list is scrollable and clamped: it shows at most 15 rows and never more than the terminal height allows (`min(15, rows - 7)`), with a `(3/87)` position indicator, so navigation cannot push the selection off screen.
 - A trailing `Other…` row appears whenever the search text is not an exact model match, so any `provider/model` in your registry can be entered by hand.
 - Models without extended thinking are stored with `defaultThinkingLevel: "off"`; reasoning models prompt for a level limited to what the model supports.
