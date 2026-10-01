@@ -6,7 +6,7 @@ export interface PickerItem {
 	value: string;
 	/** Primary column text. */
 	label: string;
-	/** Secondary column text (model id, markers). */
+	/** Secondary column text (provider, model id, markers). */
 	description: string;
 	/** Text the fuzzy search runs against. */
 	searchText: string;
@@ -17,7 +17,7 @@ export function buildPickerItems(models: readonly ModelLike[], current?: ModelLi
 	const sorted = sortModels(models);
 	return sorted.map((model) => {
 		const isCurrent = !!current && current.provider === model.provider && current.id === model.id;
-		const description = [model.id, isCurrent ? "current" : undefined].filter(Boolean).join("  ");
+		const description = [model.provider, model.id, isCurrent ? "current" : undefined].filter(Boolean).join("  ");
 		return {
 			value: modelRef(model),
 			label: model.name,
